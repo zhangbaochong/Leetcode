@@ -18,5 +18,8 @@
     <ClCompile Include="Nim Game.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Add Digits.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
