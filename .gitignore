@@ -1,6 +1,11 @@
 *.sln
+
 *.vcxproj
+
 Leetcode/Debug
+
 *.suo
-*.vcxproj..filters
+
+*.filters
+
 Debug/
