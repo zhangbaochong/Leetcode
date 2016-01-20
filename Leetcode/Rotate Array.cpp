@@ -19,15 +19,15 @@ public:
 	}
 };
 
-int main()
-{
-	vector<int> nums = { 1, 2, 3, 4, 5, 6, 7 };
-	Solution s;
-	s.rotate(nums,3);
-	for (auto num : nums)
-	{
-		cout << num << ' ';
-	}
-	system("pause");
-	return 0;
-}
+//int main()
+//{
+//	vector<int> nums = { 1, 2, 3, 4, 5, 6, 7 };
+//	Solution s;
+//	s.rotate(nums,3);
+//	for (auto num : nums)
+//	{
+//		cout << num << ' ';
+//	}
+//	system("pause");
+//	return 0;
+//}
