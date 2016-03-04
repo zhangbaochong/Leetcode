@@ -1,37 +1,55 @@
-#include <iostream>
-using namespace std;
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
-
+/**
+* Definition for singly-linked list.
+* struct ListNode {
+*     int val;
+*     ListNode *next;
+*     ListNode(int x) : val(x), next(NULL) {}
+* };
+*/
 class Solution {
 public:
-	bool isPalindrome(ListNode* head) {
-		ListNode *p(head), *q(head);
-		while (p != nullptr && p->next != nullptr)
-		{
-			p = p->next;
-			q = q->next->next;
-		}
 
-		ListNode *pre = nullptr;
-		while (p!=nullptr)
+	ListNode* reverseList(ListNode* head) {
+		ListNode *cur = head;
+		ListNode *tmp, *prev = NULL;
+		while (cur)
 		{
-			ListNode *next = p->next;
-			p->next = pre;
-			pre = p;
-			p = next;
+			tmp = cur->next;
+			cur->next = prev;
+			prev = cur;
+			cur = tmp;
 		}
-		q = head;
-		while (pre)
+		return prev;
+	}
+
+	bool isPalindrome(ListNode* head) {
+		if (!head || !head->next)
+			return true;
+		//快慢指针法 寻找中点
+		ListNode *slow, *fast;
+		slow = fast = head;
+		while (fast && fast->next)
 		{
-			if (pre->val != q->val)
+			slow = slow->next;
+			fast = fast->next->next;
+		}
+		if (fast)//链表元素奇数个
+		{
+			slow->next = reverseList(slow->next);
+			slow = slow->next;
+		}
+		else//链表偶数个
+		{
+			slow = reverseList(slow);
+		}
+		while (slow)
+		{
+			if (head->val != slow->val)
+			{
 				return false;
-			pre = pre->next;
-			q = q->next;
+			}
+			slow = slow->next;
+			head = head->next;
 		}
 		return true;
 	}
